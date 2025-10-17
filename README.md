@@ -1,9 +1,9 @@
-## Recovery Device Tree for the Samsung Galaxy A10 (Exynos)
+## Recovery Device Tree for the Samsung Galaxy A8 (2018) (Exynos)
 
 ## How-to compile it:
 
 ```sh
 . build/envsetup.sh
-lunch omni_a10-eng
+lunch twrp_jackpotlte-eng
 make recoveryimage -j$(nproc --all)
 ```
