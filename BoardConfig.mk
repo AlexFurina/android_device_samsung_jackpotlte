@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/a10
+LOCAL_PATH := device/samsung/jackpotlte
 
 # Bootloader
 BOARD_VENDOR := samsung
-TARGET_SOC := exynos7884B
-TARGET_BOOTLOADER_BOARD_NAME := universal7884B
+TARGET_SOC := exynos7885
+TARGET_BOOTLOADER_BOARD_NAME := universal7885
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
@@ -57,14 +57,13 @@ TARGET_BOARD_PLATFORM_GPU := mali-g71
 
 # Kernel
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image
-BOARD_PREBUILT_DTBOIMAGE := $(LOCAL_PATH)/prebuilt/recoverydtbo
-BOARD_INCLUDE_RECOVERY_DTBO := true
+TARGET_PREBUILT_DTB := $(LOCAL_PATH)/prebuilt/dt
 TARGET_KERNEL_ARCH := arm64
 
 # Boot
 BOARD_BOOT_HEADER_VERSION := 1
 BOARD_KERNEL_BASE := 0x10000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=exynos7884B androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=samsungexynos7885 androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_OFFSET := 0x00008000
@@ -74,7 +73,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --pagesize $(BOARD_KERNEL_PAGESIZE) --board "SRPSA10A004RU"
-BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_PREBUILT_DTBOIMAGE)
+BOARD_MKBOOTIMG_ARGS += --dt $(TARGET_PREBUILT_DTB)
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkboot/bootimg.mk
 
 # Recovery
@@ -119,7 +118,7 @@ TW_INCLUDE_CRYPTO := false
 TW_INCLUDE_CRYPTO_FBE := false
 
 # TWRP specific build flags
-TW_DEVICE_VERSION := Samsung Galaxy A10
+TW_DEVICE_VERSION := Samsung Galaxy A8 (2018)
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
@@ -145,4 +144,5 @@ RECOVERY_SDCARD_ON_DATA := true
 
 # LZMA Compression
 LZMA_COMPRESSION := -9
-LZMA_RAMDISK_TARGETS := recovery
+LZMA_RAMDISK_TARGETS := recovery,boot
+BOARD_RAMDISK_USE_LZMA := true
