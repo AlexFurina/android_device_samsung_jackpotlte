@@ -4,7 +4,6 @@ on fs
 
 on init
     write /proc/sys/kernel/hung_task_timeout_secs 0
-    exec u:r:recovery:s0 -- /system/bin/link.sh
 
 service hwservicemanager /system/bin/hwservicemanager
     user root
