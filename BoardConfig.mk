@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/jackpotlte
+DEVICE_PATH := device/samsung/jackpotlte
 
 # Bootloader
 BOARD_VENDOR := samsung
@@ -61,19 +61,11 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_KERNEL_CMDLINE := androidboot.hardware=samsungexynos7885
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/Image
-TARGET_PREBUILT_DTB := $(LOCAL_PATH)/prebuilt/dtb
-BOARD_CUSTOM_MKBOOTIMG := $(LOCAL_PATH)/mkboot/mkbootimg
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkboot/bootimg.mk
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+BOARD_CUSTOM_MKBOOTIMG := $(DEVICE_PATH)/mkboot/mkbootimg
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkboot/bootimg.mk
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(TARGET_PREBUILT_DTB)
-
-# Recovery
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_SUPPRESS_SECURE_ERASE := true
-
-# Fastbootd
-TW_INCLUDE_FASTBOOTD := true
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -108,14 +100,16 @@ PLATFORM_VERSION := 16.1.0
 TW_INCLUDE_CRYPTO := false
 TW_INCLUDE_CRYPTO_FBE := false
 
+# Recovery
+TARGET_RECOVERY_PIXEL_FORMAT := ABGR_8888
+RECOVERY_SDCARD_ON_DATA := true
+
 # TWRP specific build flags
 TW_DEVICE_VERSION := Samsung Galaxy A8 (2018)
 TW_THEME := portrait_hdpi
-TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 150
-TW_SKIP_COMPATIBILITY_CHECK := true
 TW_INCLUDE_RESETPROP := true
 TW_EXTRA_LANGUAGES := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
@@ -125,14 +119,10 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/kernel/config/usb_gadget/g1/functions/m
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_INCLUDE_NTFS_3G := true
-TW_USE_NEW_MINADBD := true
-TW_NO_LEGACY_PROPS := true
-TW_USE_TOOLBOX := true
 TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-RECOVERY_SDCARD_ON_DATA := true
 
 # LZMA Compression
 LZMA_COMPRESSION := -9

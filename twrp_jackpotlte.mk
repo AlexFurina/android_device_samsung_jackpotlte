@@ -25,10 +25,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/samsung/jackpotlte/device.mk)
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := twrp_jackpotlte
 PRODUCT_DEVICE := jackpotlte
