@@ -28,7 +28,7 @@ $(call inherit-product, device/samsung/jackpotlte/device.mk)
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := twrp_jackpotlte
 PRODUCT_DEVICE := jackpotlte
-PRODUCT_MODEL := Galaxy_A8 (2018)
+PRODUCT_MODEL := Galaxy A8 2018
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
